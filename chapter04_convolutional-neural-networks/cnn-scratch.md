@@ -34,7 +34,7 @@ out = nd.Convolution(data, w, b, kernel=w.shape[2:], num_filter=w.shape[1])
 print('input:', data, '\n\nweight:', w, '\n\nbias:', b, '\n\noutput:', out)
 ```
 
-我们可以控制如何移动窗口，和在边缘的时候如何填充窗口。下图演示了`stride=1`和`pad=1`。
+我们可以控制如何移动窗口，和在边缘的时候如何填充窗口。下图演示了`stride=2`和`pad=1`。
 
 ![](https://raw.githubusercontent.com/vdumoulin/conv_arithmetic/master/gif/padding_strides.gif)
 
@@ -120,8 +120,6 @@ ctx
 
 ```{.python .input  n=66}
 weight_scale = .01
-num_outputs = 10
-num_fc = 128
 
 # output channels = 20, kernel = (5,5)
 W1 = nd.random_normal(shape=(20,1,5,5), scale=weight_scale, ctx=ctx)
