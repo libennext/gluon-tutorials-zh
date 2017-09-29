@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 通过MXNet/Gluon来动手学习深度学习
 
 主页在 [https://zh.gluon.ai/](https://zh.gluon.ai/)
@@ -15,7 +14,7 @@ build服务器在 http://gluon-ci.mxnet.io 。这台服务器有一块Nvidia M60
 
 在本地可以如下build html（需要GPU支持）
 
-```bash
+```{.python .input}
 conda env update -f build/build.yml
 source activate gluon_zh_docs
 make html
@@ -25,7 +24,7 @@ make html
 
 如果没有改动notebook里面源代码，所以不想执行notebook，可以使用
 
-```
+```{.python .input}
 make html EVAL=0
 ```
 
@@ -35,11 +34,11 @@ make html EVAL=0
 
 编译pdf版本需要xelatex，和思源字体。在Ubuntu可以这样安装
 
-```bash
+```{.python .input}
 sudo apt-get install texlive-full
 ```
 
-```bash
+```{.python .input}
 wget https://github.com/adobe-fonts/source-han-sans/raw/release/OTF/SourceHanSansHWSC.zip
 wget https://github.com/adobe-fonts/source-han-serif/raw/release/OTF/SourceHanSerifSC_EL-M.zip
 unzip SourceHanSansHWSC.zip
@@ -52,47 +51,8 @@ sudo fc-cache -f -v
 
 然后可以编译了
 
-```bash
+```{.python .input}
 make latex
 cd _build/latex
 xelatex -interaction nonstopmode gluon_tutorials_zh.tex
 ```
-=======
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/libennext/HOLLO-2/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/libennext/HOLLO-2/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
->>>>>>> upstream/master
