@@ -75,7 +75,7 @@ $$y = 1.2x - 3.4x^2 + 5.6x^3 + 5.0 + \text{noise}$$
 
 需要注意的是，我们用以上相同的数据生成函数来生成训练数据集和测试数据集。两个数据集的样本数都是100。
 
-```{.python .input  n=1}
+```{.python .input  n=2}
 from mxnet import ndarray as nd
 from mxnet import autograd
 from mxnet import gluon
