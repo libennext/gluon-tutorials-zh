@@ -19,7 +19,7 @@
 
 （图片版权属于vdumoulin@github）
 
-我们使用`nd.Convlution`来演示这个。
+我们使用`nd.Convolution`来演示这个。
 
 ```{.python .input  n=47}
 from mxnet import nd
@@ -47,7 +47,7 @@ print('input:', data, '\n\nweight:', w, '\n\nbias:', b, '\n\noutput:', out)
 
 当输入数据有多个通道的时候，每个通道会有对应的权重，然后会对每个通道做卷积之后在通道之间求和
 
-$$conv(data, w, b) = \sum_i conv(data[:,i,:,:], w[0,i,:,:], b)$$
+$$conv(data, w, b) = \sum_i conv(data[:,i,:,:], w[:,i,:,:], b)$$
 
 ```{.python .input  n=49}
 w = nd.arange(8).reshape((1,2,2,2))
@@ -103,7 +103,7 @@ train_data, test_data = load_data_fashion_mnist(batch_size)
 
 ## 定义模型
 
-因为卷积网络计算比全连接要复杂，这里我们默认使用GPU来计算。如果GPU不能用，默认使用CPU。
+因为卷积网络计算比全连接要复杂，这里我们默认使用GPU来计算。如果GPU不能用，默认使用CPU。（下面这段代码会保存在`utils.py`里可以下次重复使用）。
 
 ```{.python .input  n=65}
 import mxnet as mx
@@ -183,7 +183,7 @@ for data, _ in train_data:
 
 ## 训练
 
-跟前面没有什么不同的
+跟前面没有什么不同的，除了这里我们使用`as_in_context`将`data`和`label`都放置在需要的设备上。（下面这段代码也将保存在`utils.py`里方便之后使用）。
 
 ```{.python .input  n=60}
 from mxnet import autograd as autograd
@@ -210,12 +210,13 @@ for epoch in range(5):
 
     test_acc = evaluate_accuracy(test_data, net, ctx)
     print("Epoch %d. Loss: %f, Train acc %f, Test acc %f" % (
-            epoch, train_loss/len(train_data), train_acc/len(train_data), test_acc))
+        epoch, train_loss/len(train_data), 
+        train_acc/len(train_data), test_acc))
 ```
 
 ## 结论
 
-可以看到卷积神经网络比前面的多层感知的分类精度更好。事实上，如果你看懂了这一章，那你基本知道了计算视觉里最重要的几个想法。LeNet早在90年代就提出来了。不管你相信不详细，如果你5年前懂了这个而且开了家公司，那么你很可能现在已经把公司作价几千万卖个某大公司了。幸运的是，或者不幸的是，现在的算法已经更加高级些了，接下来我们会看到一些更加新的想法。
+可以看到卷积神经网络比前面的多层感知的分类精度更好。事实上，如果你看懂了这一章，那你基本知道了计算视觉里最重要的几个想法。LeNet早在90年代就提出来了。不管你相信不相信，如果你5年前懂了这个而且开了家公司，那么你很可能现在已经把公司作价几千万卖个某大公司了。幸运的是，或者不幸的是，现在的算法已经更加高级些了，接下来我们会看到一些更加新的想法。
 
 ## 练习
 
